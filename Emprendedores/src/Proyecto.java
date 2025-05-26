@@ -1,16 +1,29 @@
 public class Proyecto {
     private String nombre;
     private String descripcion;
-    private String nivelInnovacion;
-    private String estado;
+    private NivelInnovacionProyecto nivelInnovacion;
+    private EstadoProyecto estado;
     private Emprendedor emprendedor;
 
-    public Proyecto(String nombre, String descripcion, String nivelInnovacion, String estado, Emprendedor emprendedor) {
+    //Aqui en lugar de poner la tipo String, le pongo el tipo enum EstadoProyecto, y NivelInnovacion
+    public Proyecto(String nombre, String descripcion, NivelInnovacionProyecto nivelInnovacion, EstadoProyecto estado, Emprendedor emprendedor) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.nivelInnovacion = nivelInnovacion;
         this.estado = estado;
         this.emprendedor = emprendedor;
+    }
+    //Nos va a permitir tener acceso al valor del atributo estado que esta encapsulado en proyecto
+    public EstadoProyecto getEstado(){ return estado;}
+
+    //Al atributo le estamos habilitando la modificacion
+    public  void setEstado (EstadoProyecto estado) {
+            this.estado = estado;
+    }
+
+    public NivelInnovacionProyecto getNivelInnovacion() {return nivelInnovacion;}
+    public void setNivelInnovacion(NivelInnovacionProyecto nivelInnovacion) {
+            this.nivelInnovacion = nivelInnovacion;
     }
 
     public void mostrarResumen() {
