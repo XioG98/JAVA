@@ -26,7 +26,7 @@ public class Persona {
     }
 
     //Metodo comun heredable po subclases, acceso publico, no retorna
-    public void mostrarDatosBasico() {
+    public void mostrarDatosBasicos() {
         System.out.println("nombre = " + nombre);
         System.out.println("documento = " + documento);
         System.out.println("ciudad = " + ciudad);

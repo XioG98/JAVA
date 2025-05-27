@@ -1,19 +1,20 @@
-public class Emprendedor { //Clase Plantilla
+//se debe usar extends para poder usar la superclase
+public class Emprendedor extends Persona {
     // se pone private para que solo se muestre si la llamo, no se pue
-    private String documento;
-    private String nombre;
+
     private String sector;
-    private String ciudad;
 
     public Emprendedor(String documento, String nombre, String sector, String ciudad) {
-        this.documento = documento;
-        this.nombre = nombre;
+        //La expresion super le envia a la clase padrepara que haga la asignacion de los atribuos
+        super(nombre,documento,ciudad);
         this.sector = sector;
-        this.ciudad = ciudad;
     }
 
-    public String getDocumento() {return documento;}
-    public String getNombre() {return nombre;}
     public String getSector() {return sector;}
-    public String getCiudad() {return ciudad;}
+
+  /*  @Override
+    public void mostrarDatosBasicos() {
+        super.mostrarDatosBasicos();
+        System.out.println("sector = " + sector);
+    } */
 }

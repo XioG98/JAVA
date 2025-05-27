@@ -4,6 +4,7 @@ public class Proyecto {
     private NivelInnovacionProyecto nivelInnovacion;
     private EstadoProyecto estado;
     private Emprendedor emprendedor;
+    private Mentor mentor;
 
     //Aqui en lugar de poner la tipo String, le pongo el tipo enum EstadoProyecto, y NivelInnovacion
     public Proyecto(String nombre, String descripcion, NivelInnovacionProyecto nivelInnovacion, EstadoProyecto estado, Emprendedor emprendedor) {
@@ -12,6 +13,7 @@ public class Proyecto {
         this.nivelInnovacion = nivelInnovacion;
         this.estado = estado;
         this.emprendedor = emprendedor;
+        this.mentor = mentor;
     }
     //Nos va a permitir tener acceso al valor del atributo estado que esta encapsulado en proyecto
     public EstadoProyecto getEstado(){ return estado;}
@@ -29,10 +31,11 @@ public class Proyecto {
     public void mostrarResumen() {
         System.out.println("Registro exitoso\n");
         System.out.println("   Emprendedor   ");
-        System.out.println("\tNombre: " + emprendedor.getNombre());
-        System.out.println("\tDocumento: " + emprendedor.getDocumento());
-        System.out.println("\tSector: " + emprendedor.getSector());
-        System.out.println("\tCiudad: " + emprendedor.getCiudad());
+        //Si emprendedor es instancia de emprendedor, imprimimos los datos
+        if ( emprendedor instanceof Emprendedor) {
+            emprendedor.mostrarDatosBasicos(); //Los trae de la supeprclase, emprendedor los heredó de persona
+            System.out.println("Sector = " + ((Emprendedor) emprendedor).getSector());
+        }
         System.out.println("\t   Proyecto   ");
         System.out.println("\tNombre: " + nombre);
         System.out.println("\tDescripción: " + descripcion);
