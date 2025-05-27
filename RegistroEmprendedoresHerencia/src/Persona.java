@@ -18,5 +18,17 @@ public class Persona {
     public String getCiudad() { return ciudad; }
 
     // Setters acceso publico, no retorna, valida que no esté empty
+//A nombre y documento no los podemos cambiar,
+    public void setCiudad(String nombre) {
+        if (!ciudad.isEmpty()) {
+            this.ciudad = ciudad;
+        }
+    }
 
+    //Metodo comun heredable po subclases, acceso publico, no retorna
+    public void mostrarDatosBasico() {
+        System.out.println("nombre = " + nombre);
+        System.out.println("documento = " + documento);
+        System.out.println("ciudad = " + ciudad);
+    }
 }
