@@ -1,3 +1,4 @@
+import java.nio.DoubleBuffer;
 import java.util.Scanner;
 
 public class App {
@@ -77,7 +78,7 @@ public class App {
 
         while (estado == null) {
             try {
-                System.out.print("\n Ingrese estado del proyecto: \nPENDIENTE, EN_CURSO, FINALIZADA");
+                System.out.print("\n Ingrese estado del proyecto: \nPENDIENTE, EN_CURSO, FINALIZADA: ");
                 String estadoTexto = sc.nextLine().toUpperCase();
 
 
@@ -90,6 +91,60 @@ public class App {
         Proyecto pry = new Proyecto( codigo, ciudadProyecto, area, eficiencia, radiacion, estado, resp);
         //pry.setEstado(estado);
         pry.mostrarResumen();
+
+        int opciones=1;
+        System.out.println("--------------------------------------------");
+
+        while (opciones != 0) {
+            System.out.println("\nPara modificar datos, ingrese la opción deseada \n1. Estado de la instalación \n2. Área de la instalación  \n3. Eficiencia de la instalación \n0. Ninguna");
+            opciones = sc.nextInt();
+            sc.nextLine();
+            if (opciones == 1) {
+                EstadoProyecto nuevoEstado = null;
+                while (nuevoEstado == null) {
+                    try {
+                        System.out.print("\n Ingrese nuevo estado de la instalacion: \nPENDIENTE, EN_CURSO, FINALIZADA: ");
+                        String nuevoEstadoTexto = sc.nextLine().toUpperCase();
+                        nuevoEstado = EstadoProyecto.valueOf(nuevoEstadoTexto);
+                    } catch (IllegalArgumentException e) {
+                        System.out.print("\n\tEl valor del estado ingresado no es válido");
+                    }
+                }
+                        pry.setEstado(nuevoEstado);
+
+            } else if (opciones == 2) {
+                double nuevaArea = 0;
+                while (nuevaArea < 5 || nuevaArea > 50) {
+                    try {
+                        System.out.print("\nIngrese el nuevo área en m² (entre 5 y 50):");
+                        nuevaArea = sc.nextDouble();
+                        sc.nextLine();
+                    } catch (Exception e) {
+                        System.out.print("\nÁrea ingresada fue inválida");
+                        sc.next();
+                        nuevaArea = 0;
+                    }
+                }
+                pry.setArea(nuevaArea);
+            } else if (opciones == 3) {
+                double nuevaEficiencia = 0;
+                while (nuevaEficiencia < 0.10 || nuevaEficiencia > 0.25) {
+                    try {
+                        System.out.print("\nIngrese el nuevo valor de la eficiencia (entre 0.10 y 0.25): ");
+                        nuevaEficiencia = sc.nextDouble();
+                        sc.nextLine();
+                    } catch (IllegalArgumentException e) {
+                        System.out.print("\nEficiencia ingresada fue inválida");
+                    }
+                }
+                pry.setEficiencia(nuevaEficiencia);
+            } else {
+                    System.out.println("No se ha modificado ningún dato.");
+            }
+        }
+        pry.mostrarResumen();
         sc.close();
     }
 }
+
+

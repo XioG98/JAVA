@@ -22,14 +22,23 @@ public class Proyecto {
 
     public EstadoProyecto getEstado(){ return estado;}
     //Habilitamos para modificar
-//    public  void setEstado (EstadoProyecto estado) {
-//        this.estado = estado;
-//    }
+    public  void setEstado (EstadoProyecto estado) {
+        this.estado = estado;
+    }
+    public  void setEficiencia (double eficiencia) {
+        this.eficiencia = eficiencia;
+    }
+    public void setArea(double area) {
+        if (area >0 ) {
+            this.area = area;
+        }
+    }
+
 
     public void mostrarResumen() {
 
         System.out.println("\nRegistro de Proyecto Exitoso\n");
-        System.out.println("\t   Responsable   ");
+        System.out.println("\t   Responsable de la instalación   ");
         if ( responsable instanceof Responsable) {
             responsable.mostrarDatosBasicos(); //Los trae de la supeprclase, emprendedor los heredó de persona
             System.out.println("Cargo: " + ((Responsable) responsable).getCargo());

@@ -17,7 +17,7 @@ public class Persona {
     public String getCiudad() { return ciudad; }
     public String getCelular() { return celular; }
 
-    // Setters
+/*    // Setters
     public void setCiudad(String nombre) {
         if (!ciudad.isEmpty()) {
             this.ciudad = ciudad;
@@ -27,7 +27,7 @@ public class Persona {
         if (!celular.isEmpty()) {
             this.celular = celular;
         }
-    }
+    }*/
     //Metodo comun heredable po subclases, acceso publico, no retorna
     public void mostrarDatosBasicos() {
         System.out.println("\tnombre: " + nombre);
