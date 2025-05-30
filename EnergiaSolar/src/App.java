@@ -4,47 +4,92 @@ public class App {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-//Capturar info del responsable
-        System.out.println("Ingrese el nombre de la persona: ");
+        //Capturar info del responsable
+        System.out.print("\nIngrese el nombre de la persona responsable: ");
         String nombre = sc.nextLine();
 
-        System.out.println("Ingrese el documento de la persona: ");
+        System.out.print("\nIngrese el documento de la persona: ");
         String  documento = sc.nextLine();
 
-        System.out.println("Ingrese la ciudad de la persona: ");
+        System.out.print("\nIngrese la ciudad de la persona: ");
         String ciudad = sc.nextLine();
 
-        System.out.println("Ingrese el número de celular: ");
+        System.out.print("\nIngrese el número de celular: ");
         String celular = sc.nextLine();
 
-        System.out.println("Ingrese el cargo del responsable: ");
+        System.out.print("\nIngrese el cargo del responsable: ");
         String cargo = sc.nextLine();
 
-        Responsable resp = new Responsable(nombre, documento, ciudad, celular, cargo);
+        NombreInstitucion nombreInstitucion = null;
+        while (nombreInstitucion == null) {
+            try {
+                System.out.print("\nIngrese el nombre de la institución responsable de la instalación: SOLAR_ENERGIA_SA, PANELES_ECO_SOL, ENERGIA_VERDE_TEC SOLTEC_INSTALACIONES, SUNPOWER_COLOMBIA: ");
+                String nombreTexto = sc.nextLine().toUpperCase();
+                nombreInstitucion = NombreInstitucion.valueOf(nombreTexto);
+            } catch (IllegalArgumentException e) {
+                System.out.print("\nNombre de la institución inválido, por favor intente de nuevo.");
+            }
+        }
+        Responsable resp = new Responsable(nombre, documento, ciudad, celular, cargo, nombreInstitucion);
 
-// Capturas info proyecto
+        // Capturas info proyecto
 
-        System.out.println("Ingrese el código del proyecto: ");
+        System.out.print("\nIngrese el código del proyecto: ");
         String codigo = sc.nextLine();
 
-        System.out.println("Ingrese la ciudad donde se va a realizar el proyecto: ");
+        System.out.print("\nIngrese la ciudad donde se va a realizar el proyecto: ");
         String  ciudadProyecto = sc.nextLine();
 
-        System.out.println("Ingrese el área en m² ");
-        double area = sc.nextLine();
 
-        System.out.println("Ingrese la eficiencia: ");
-        double eficiencia = sc.nextLine();
+        double area = 0;
+        while (area < 5 || area > 50) {
+            try {
+                System.out.print("\nIngrese el área en m² (entre 5 y 50):");
+                area = sc.nextDouble();
+            } catch (Exception e) {
+                System.out.print("\nÁrea ingresada fue inválida");
+                sc.next();
+                area = 0;
+            }
+        }
+        double eficiencia = 0;
+        while (eficiencia < 0.10 || eficiencia > 0.25) {
+            try {
+                System.out.print("\nIngrese el valor de la eficiencia (entre 0.10 y 0.25): ");
+                eficiencia = sc.nextDouble();
 
-        System.out.println("Ingrese la radiación de la localidad en kWh/m²/día: ");
-        double radiacion = sc.nextLine();
-
-        if ((area != 0.0) && (eficiencia != 0.0) && (radiacion != 0.0)) {
-            double energiaGenerada = eficiencia * area * radiacion;
-
+            } catch (IllegalArgumentException e) {
+                System.out.print("\nEficiencia ingresada fue inválida");
+            }
+        }
+        double radiacion = 0;
+        while (radiacion < 3.5 || radiacion > 6.5) {
+            try {
+                System.out.print("\nIngrese el valor de la radiación solar promedio diaria en kWh/m²/día (entre 3.5 y 6.5): ");
+                radiacion = sc.nextDouble();
+                sc.nextLine();
+            } catch (IllegalArgumentException e) {
+                System.out.print("\nRadiación ingresada fue inválida");
+            }
         }
 
+        EstadoProyecto estado = null;
 
-        private String clasificacion;
+        while (estado == null) {
+            try {
+                System.out.print("\n Ingrese estado del proyecto: \nPENDIENTE, EN_CURSO, FINALIZADA");
+                String estadoTexto = sc.nextLine().toUpperCase();
+
+
+                estado = EstadoProyecto.valueOf(estadoTexto);
+            } catch (IllegalArgumentException e) {
+                System.out.print("\n\tEl valor del estado ingresado no es válido");
+            }
+        }
+
+        Proyecto pry = new Proyecto( codigo, ciudadProyecto, area, eficiencia, radiacion, estado, resp);
+        //pry.setEstado(estado);
+        pry.mostrarResumen();
+        sc.close();
     }
 }

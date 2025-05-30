@@ -16,31 +16,45 @@ public class Proyecto {
         this.area = area;
         this.eficiencia = eficiencia;
         this.radiacion = radiacion;
-        this.estado = estado.PENDIENTE;
+        this.estado = estado;
         this.responsable = responsable;
     }
 
     public EstadoProyecto getEstado(){ return estado;}
     //Habilitamos para modificar
-    public  void setEstado (EstadoProyecto estado) {
-        this.estado = estado;
-    }
+//    public  void setEstado (EstadoProyecto estado) {
+//        this.estado = estado;
+//    }
 
     public void mostrarResumen() {
 
-        System.out.println("Registro de Proyecto Exitoso\n");
-        System.out.println("   Responsable   ");
+        System.out.println("\nRegistro de Proyecto Exitoso\n");
+        System.out.println("\t   Responsable   ");
         if ( responsable instanceof Responsable) {
             responsable.mostrarDatosBasicos(); //Los trae de la supeprclase, emprendedor los heredó de persona
             System.out.println("Cargo: " + ((Responsable) responsable).getCargo());
         }
+        //Le calculamos la energia generada al proyecto y su clasificacion
+        double energiaGenerada = 0;
+        String clasificacion = null;
+        if ((area != 0.0) && (eficiencia != 0.0) && (radiacion != 0.0)) {
+            energiaGenerada = eficiencia * area * radiacion;
+
+            if (energiaGenerada < 5) {
+                clasificacion = "Producción baja";
+            } else if (energiaGenerada >= 5 && energiaGenerada <= 10) {
+                clasificacion = "Producción media ";
+            } else {
+                clasificacion = "Producción alta";
+            }
+        }
+
         System.out.println("\t   Proyecto   ");
         System.out.println("\tCódigo: " + codigo);
         System.out.println("\tCiudadProyecto: " + ciudadProyecto);
         System.out.println("\tEstado: " + estado);
         System.out.println("\t   Características   ");
         System.out.println("\tArea: " + area);
-        System.out.println("\tEstado: " + estado);
         System.out.println("\tEficiencia: " + eficiencia);
         System.out.println("\tRadiacion solar: " + radiacion);
         System.out.println("--------------------------------------------");
