@@ -10,7 +10,7 @@ public class App {
         String nombre = sc.nextLine();
 
         System.out.print("\nIngrese el documento de la persona: ");
-        String  documento = sc.nextLine();
+        String documento = sc.nextLine();
 
         System.out.print("\nIngrese la ciudad de la persona: ");
         String ciudad = sc.nextLine();
@@ -39,7 +39,7 @@ public class App {
         String codigo = sc.nextLine();
 
         System.out.print("\nIngrese la ciudad donde se va a realizar el proyecto: ");
-        String  ciudadProyecto = sc.nextLine();
+        String ciudadProyecto = sc.nextLine();
 
 
         double area = 0;
@@ -88,17 +88,19 @@ public class App {
             }
         }
 
-        Proyecto pry = new Proyecto( codigo, ciudadProyecto, area, eficiencia, radiacion, estado, resp);
+        Proyecto pry = new Proyecto(codigo, ciudadProyecto, area, eficiencia, radiacion, estado, resp);
         //pry.setEstado(estado);
         pry.mostrarResumen();
 
-        int opciones=1;
+        int opciones = 1;
         System.out.println("--------------------------------------------");
 
+        //While para modificar datos; Se va a ejecutar siempre que se quiera modificar un dato.
         while (opciones != 0) {
             System.out.println("\nPara modificar datos, ingrese la opción deseada \n1. Estado de la instalación \n2. Área de la instalación  \n3. Eficiencia de la instalación \n0. Ninguna");
             opciones = sc.nextInt();
             sc.nextLine();
+            //El if, dependiendo de la opcion, modificamos el dato
             if (opciones == 1) {
                 EstadoProyecto nuevoEstado = null;
                 while (nuevoEstado == null) {
@@ -110,7 +112,7 @@ public class App {
                         System.out.print("\n\tEl valor del estado ingresado no es válido");
                     }
                 }
-                        pry.setEstado(nuevoEstado);
+                pry.setEstado(nuevoEstado);
 
             } else if (opciones == 2) {
                 double nuevaArea = 0;
@@ -139,9 +141,10 @@ public class App {
                 }
                 pry.setEficiencia(nuevaEficiencia);
             } else {
-                    System.out.println("No se ha modificado ningún dato.");
+                System.out.println("No se ha modificado ningún dato.");
             }
         }
+        //Finalmente, mostramos el resumen con los datos que se hayan actualizado
         pry.mostrarResumen();
         sc.close();
     }

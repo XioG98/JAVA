@@ -1,3 +1,5 @@
+package herencia;
+
 public class Mentor extends Persona {
 
     private String areaExperticia;

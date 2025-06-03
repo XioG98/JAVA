@@ -1,25 +1,30 @@
+import base.Emprendedor;
+import base.EstadoProyecto;
+import base.NivelInnovacionProyecto;
+import base.Proyecto;
+
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Ingrese el nombre del Emprendedor: ");
+        System.out.print("Ingrese el nombre del base.Emprendedor: ");
         String nombre = sc.nextLine();
-        System.out.print("Ingrese el documento del Emprendedor: ");
+        System.out.print("Ingrese el documento del base.Emprendedor: ");
         String documento = sc.nextLine();
-        System.out.print("Ingrese el sector al que pertenece el Emprendedor: ");
+        System.out.print("Ingrese el sector al que pertenece el base.Emprendedor: ");
         String sector = sc.nextLine();
-        System.out.print("Ingrese la ciudad del Emprendedor: ");
+        System.out.print("Ingrese la ciudad del base.Emprendedor: ");
         String ciudad = sc.nextLine();
 
         //Creación de objeto para llamar el constructor de la clase emprendedor
         Emprendedor emp = new Emprendedor(nombre, documento, sector, ciudad) ;
 
         //Captura de proyecto
-        System.out.print("\nIngrese el nombre del Proyecto: ");
+        System.out.print("\nIngrese el nombre del base.Proyecto: ");
         String nombreProyecto = sc.nextLine();
-        System.out.print("Ingrese la descripción del Proyecto: ");
+        System.out.print("Ingrese la descripción del base.Proyecto: ");
         String descripcion = sc.nextLine();
 
             //Captura de estado
@@ -46,12 +51,12 @@ public class App {
             }
         }
         // Este es el metodo como capturamos estado y nivel antes. Esto lo comento porque no se estará usando
-//        System.out.print("Ingrese el nivel de innovación del Proyecto (Bajo, Medio, Alto): ");
+//        System.out.print("Ingrese el nivel de innovación del base.Proyecto (Bajo, Medio, Alto): ");
 //        String nivel = sc.nextLine();
-//        System.out.print("Ingrese el estado del Proyecto: ");
+//        System.out.print("Ingrese el estado del base.Proyecto: ");
 //        String estado = sc.nextLine();
 
-        //Creación de objeto para llamar el constructor de la clase Proyecto
+        //Creación de objeto para llamar el constructor de la clase base.Proyecto
         //El orden debe coincidir con el del metodo
         Proyecto pry = new Proyecto(nombreProyecto, descripcion, nivelInnovacion, estado, emp) ;
         pry.setEstado(estado);
@@ -64,7 +69,7 @@ public class App {
         System.out.println("\n ----------------------------------------------------");
 
 //        //Modificacion con setter
-//        System.out.println("\nIngrese nuevo estado del Proyecto: ");
+//        System.out.println("\nIngrese nuevo estado del base.Proyecto: ");
 //        String nuevoEstado = sc.nextLine();
 //        pry.setEstado(nuevoEstado);
 //

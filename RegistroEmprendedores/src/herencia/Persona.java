@@ -1,3 +1,5 @@
+package herencia;
+
 public class Persona {
     //Definir los atributos comunes; será nuestra super clase
     protected String nombre;

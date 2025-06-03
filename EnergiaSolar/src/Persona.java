@@ -17,6 +17,14 @@ public class Persona {
     public String getCiudad() { return ciudad; }
     public String getCelular() { return celular; }
 
+    //Metodo comun heredable po subclases, acceso publico, no retorna
+    public void mostrarDatosBasicos() {
+        System.out.println("\tnombre: " + nombre);
+        System.out.println("\tdocumento: " + documento);
+        System.out.println("\tciudad: " + ciudad);
+        System.out.println("\tcelular: " + celular);
+    }
+}
 /*    // Setters
     public void setCiudad(String nombre) {
         if (!ciudad.isEmpty()) {
@@ -28,11 +36,3 @@ public class Persona {
             this.celular = celular;
         }
     }*/
-    //Metodo comun heredable po subclases, acceso publico, no retorna
-    public void mostrarDatosBasicos() {
-        System.out.println("\tnombre: " + nombre);
-        System.out.println("\tdocumento: " + documento);
-        System.out.println("\tciudad: " + ciudad);
-        System.out.println("\tcelular: " + celular);
-    }
-}

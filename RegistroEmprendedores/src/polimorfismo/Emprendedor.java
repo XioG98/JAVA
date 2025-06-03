@@ -1,3 +1,5 @@
+package polimorfismo;
+
 //se debe usar extends para poder usar la superclase
 public class Emprendedor extends Persona {
     // se pone private para que solo se muestre si la llamo, no se pue

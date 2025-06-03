@@ -34,7 +34,6 @@ public class Proyecto {
         }
     }
 
-
     public void mostrarResumen() {
 
         System.out.println("\nRegistro de Proyecto Exitoso\n");
